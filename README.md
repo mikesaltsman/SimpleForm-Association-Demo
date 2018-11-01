@@ -11,8 +11,8 @@ Create your join table. In this case it is AccessoriesVechile. Vehicles will hav
 *3 
 In your Vehicles class, add the following: 
 
-`has_many :accessories_vehicles`
-`has_many :accessories, :through => :accessories_vehicles`
+`has_many :accessories_vehicles`<br>
+`has_many :accessories, :through => :accessories_vehicles`<br>
 `accepts_nested_attributes_for :accessories`
   
 *4 

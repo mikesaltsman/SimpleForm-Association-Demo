@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I'll Keep this simple. 
 
-Things you may want to cover:
+## 1
+Create your two models. In this case we've got 'Vehicles' and 'Accessories'. Vehicles will have many Accessories. 
 
-* Ruby version
+## 2 
+Create your join table. In this case it is AccessoriesVechile. Vehicles will have many Accessories through AccessoriesVehicle. 
 
-* System dependencies
+## 3 
+In your Vehicles class, add the following: 
 
-* Configuration
+      has_many :accessories_vehicles<br>
+      has_many :accessories, :through => :accessories_vehicles<br>
+      accepts_nested_attributes_for :accessories
+  
+## 4 
+In your Accessories class, make sure it only has the following: 
 
-* Database creation
+      belongs_to :vehicle
 
-* Database initialization
+## 5
+In your Vehicle _form.html.erb, add the available accessories in one line: 
 
-* How to run the test suite
+      <%= f.association :accessories,   as: :check_boxes %>
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+That's all there is to it. You should now see one checkbox for each available accessory record in the Vehicle form. Checking one will create a AccessoriesVehicle record and unchecking it will destroy that record. 
